@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lacedup/shared/cart_icon.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,6 +21,7 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
+        actions: const [CartIcon()],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
