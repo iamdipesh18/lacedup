@@ -53,3 +53,5 @@ final productsProvider = Provider((ref) {
 final reducedProductsProvider = Provider((ref) {
   return (allProducts.where((p) => p.price < 5000).toList());
 });
+
+//generated codes

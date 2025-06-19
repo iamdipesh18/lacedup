@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lacedup/shared/cart_icon.dart';
+import 'package:lacedup/screens/cart/cart_screen.dart';
 import 'package:lacedup/providers/products_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -25,7 +25,18 @@ class HomeScreen extends ConsumerWidget {
         elevation: 0,
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        actions: const [CartIcon()],
+        actions: [
+  IconButton(
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const CartScreen()),
+      );
+    },
+    icon: const Icon(Icons.shopping_bag_outlined, color: Colors.white),
+  ),
+],
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
