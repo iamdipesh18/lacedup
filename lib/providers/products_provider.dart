@@ -1,5 +1,7 @@
 import 'package:lacedup/models/product.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'products_provider.g.dart';
 
 const List<Product> allProducts = [
   Product(
@@ -14,7 +16,7 @@ const List<Product> allProducts = [
     price: 150000,
     image: 'assets/product/Alpinestars_Tech_10.jpg',
   ),
-    Product(
+  Product(
     id: '3',
     title: 'Balenciaga Speed',
     price: 3800,
@@ -26,7 +28,7 @@ const List<Product> allProducts = [
     price: 150000,
     image: 'assets/product/Alpinestars_Tech_10.jpg',
   ),
-    Product(
+  Product(
     id: '5',
     title: 'Balenciaga Speed',
     price: 3800,
@@ -46,12 +48,13 @@ const List<Product> allProducts = [
   // Product(id: '8', title: 'title', price: price, image: image),
 ];
 
-final productsProvider = Provider((ref) {
-  return allProducts;
-});
-
 final reducedProductsProvider = Provider((ref) {
   return (allProducts.where((p) => p.price < 5000).toList());
 });
 
 //generated codes
+
+@riverpod
+List<Product> products(ref) {
+  return allProducts;
+}
