@@ -18,9 +18,9 @@ const List<Product> allProducts = [
   ),
   Product(
     id: '3',
-    title: 'Balenciaga Speed',
-    price: 3800,
-    image: 'assets/product/Balenciaga_Speed.jpeg',
+    title: 'Converse Chuck Taylor 70 Hi',
+    price: 2800,
+    image: 'assets/product/Converse_Chuck_70_Hi.jpg',
   ),
   Product(
     id: '4',
@@ -48,13 +48,14 @@ const List<Product> allProducts = [
   // Product(id: '8', title: 'title', price: price, image: image),
 ];
 
-final reducedProductsProvider = Provider((ref) {
-  return (allProducts.where((p) => p.price < 5000).toList());
-});
-
 //generated codes
 
 @riverpod
 List<Product> products(ref) {
   return allProducts;
+}
+
+@riverpod
+List<Product> reducedProductsprovider(ref) {
+  return allProducts.where((p) => p.price < 5000).toList();
 }
