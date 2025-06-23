@@ -10,7 +10,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final allProducts = ref.watch(productsProvider);
-    final cartProduct = ref.watch(cartNotifierProvider);
+    final cartProducts = ref.watch(cartNotifierProvider);
 
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
@@ -47,12 +47,45 @@ class HomeScreen extends ConsumerWidget {
             crossAxisCount: 2,
             mainAxisSpacing: 16,
             crossAxisSpacing: 16,
-            childAspectRatio:
-                0.68, // Reduced from 0.75 to give more vertical space
+            childAspectRatio: 0.68,
           ),
           itemBuilder: (context, index) {
             final product = allProducts[index];
-            final isInCart = cartProduct.contains(product);
+            final isInCart = cartProducts.contains(product);
+
+            // 👉 Use regular if/else to build the button
+            Widget actionButton;
+            if (isInCart) {
+              actionButton = TextButton(
+                onPressed: () {
+                  ref
+                      .read(cartNotifierProvider.notifier)
+                      .removeProduct(product);
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.red,
+                  backgroundColor: Colors.red.shade50,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text('Remove'),
+              );
+            } else {
+              actionButton = TextButton(
+                onPressed: () {
+                  ref.read(cartNotifierProvider.notifier).addProduct(product);
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.grey.shade200,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text('Add to Cart'),
+              );
+            }
 
             return Container(
               padding: const EdgeInsets.all(12),
@@ -97,24 +130,7 @@ class HomeScreen extends ConsumerWidget {
                     style: const TextStyle(fontSize: 13, color: Colors.grey),
                   ),
                   const SizedBox(height: 6),
-                  SizedBox(
-                    width: double.infinity,
-                    child: TextButton(
-                      onPressed: () {
-                        // Add your logic here
-                      },
-                      style: TextButton.styleFrom(
-                        foregroundColor: isInCart ? Colors.red : Colors.black,
-                        backgroundColor: isInCart
-                            ? Colors.red.shade50
-                            : Colors.grey.shade200,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: Text(isInCart ? 'Remove' : 'Add to Cart'),
-                    ),
-                  ),
+                  SizedBox(width: double.infinity, child: actionButton),
                 ],
               ),
             );
