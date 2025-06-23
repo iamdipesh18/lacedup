@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lacedup/providers/products_provider.dart';
+import 'package:lacedup/providers/cart_notifier.dart';
 
 class CartScreen extends ConsumerStatefulWidget {
   const CartScreen({super.key});
@@ -14,29 +14,29 @@ class _CartScreenState extends ConsumerState<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cartProducts = ref.watch(reducedProductsproviderProvider);
+    final cartProducts = ref.watch(cartNotifierProvider);
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
-appBar: AppBar(
-  leading: IconButton(
-    icon: const Icon(Icons.arrow_back),
-    onPressed: () {
-      Navigator.of(context).pop();
-    },
-  ),
-  title: const Text(
-    'Your Cart',
-    style: TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 22,
-      letterSpacing: 1,
-    ),
-  ),
-  centerTitle: true,
-  elevation: 0,
-  backgroundColor: Colors.black,
-  foregroundColor: Colors.white,
-),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        title: const Text(
+          'Your Cart',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            letterSpacing: 1,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -54,8 +54,7 @@ appBar: AppBar(
                   ],
                 ),
               );
-            }),//.toList(),
-
+            }), //.toList(),
             // Optional: Add total or other summary widgets here
             const Divider(),
             Align(
