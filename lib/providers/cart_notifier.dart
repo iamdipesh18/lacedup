@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:lacedup/models/product.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -7,7 +8,7 @@ part 'cart_notifier.g.dart';
 class CartNotifier extends _$CartNotifier {
   @override
   Set<Product> build() {
-    return const {};
+    return {};
   }
 
   void addProduct(Product product) {
@@ -17,8 +18,12 @@ class CartNotifier extends _$CartNotifier {
   }
 
   void removeProduct(Product product) {
-    if (state.contains(product)) {
-      state = state.where((p) => p.id != product.id).toSet();
-    }
+    state = state.where((p) => p.id != product.id).toSet();
   }
+}
+
+@riverpod
+int cartTotal(CartTotalRef ref) {
+  final cartProducts = ref.watch(cartNotifierProvider);
+  return cartProducts.fold(0, (sum, p) => sum + p.price);
 }

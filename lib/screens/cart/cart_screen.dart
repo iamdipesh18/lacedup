@@ -15,6 +15,8 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final cartProducts = ref.watch(cartNotifierProvider);
+    final total = ref.watch(cartTotalProvider);
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
@@ -42,25 +44,38 @@ class _CartScreenState extends ConsumerState<CartScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ...cartProducts.map((product) {
-              return Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  children: [
-                    Image.asset(product.image, width: 60, height: 60),
-                    const SizedBox(width: 10),
-                    Expanded(child: Text(product.title)),
-                    Text('Rs ${product.price}'),
-                  ],
+            if (cartProducts.isEmpty)
+              const Center(
+                child: Text(
+                  'Your cart is empty 🛒',
+                  style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
-              );
-            }), //.toList(),
-            // Optional: Add total or other summary widgets here
+              )
+            else
+              ...cartProducts.map((product) {
+                return Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    children: [
+                      Image.asset(product.image, width: 60, height: 60),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          product.title,
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ),
+                      Text('Rs ${product.price}'),
+                    ],
+                  ),
+                );
+              }),
+            const Spacer(),
             const Divider(),
             Align(
               alignment: Alignment.centerRight,
               child: Text(
-                'Total: Rs ${cartProducts.fold(0, (sum, p) => sum + p.price)}',
+                'Total: Rs $total',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
