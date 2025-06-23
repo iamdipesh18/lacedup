@@ -1,17 +1,13 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lacedup/models/product.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class CartNotifier extends Notifier<Set<Product>> {
+part 'cart_notifier.g.dart';
+
+@riverpod
+class CartNotifier extends _$CartNotifier {
   @override
   Set<Product> build() {
-    return const {
-      Product(
-        id: '1',
-        title: 'Balenciaga Speed',
-        price: 3800,
-        image: 'assets/product/Balenciaga_Speed.jpeg',
-      ),
-    };
+    return const {};
   }
 
   void addProduct(Product product) {
@@ -22,12 +18,7 @@ class CartNotifier extends Notifier<Set<Product>> {
 
   void removeProduct(Product product) {
     if (state.contains(product)) {
-      // ✅ correct condition
       state = state.where((p) => p.id != product.id).toSet();
     }
   }
 }
-
-final cartNotifierProvider = NotifierProvider<CartNotifier, Set<Product>>(() {
-  return CartNotifier();
-});
