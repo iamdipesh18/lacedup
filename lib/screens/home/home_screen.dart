@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lacedup/providers/cart_notifier.dart';
-import 'package:lacedup/screens/cart/cart_screen.dart';
 import 'package:lacedup/providers/products_provider.dart';
+import 'package:lacedup/shared/cart_icon.dart'; // Import the reactive cart icon
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -27,16 +27,8 @@ class HomeScreen extends ConsumerWidget {
         elevation: 0,
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const CartScreen()),
-              );
-            },
-            icon: const Icon(Icons.shopping_bag_outlined, color: Colors.white),
-          ),
+        actions: const [
+          CartIcon(), // ✅ Use reactive CartIcon widget here
         ],
       ),
       body: Padding(
@@ -53,7 +45,6 @@ class HomeScreen extends ConsumerWidget {
             final product = allProducts[index];
             final isInCart = cartProducts.contains(product);
 
-            // 👉 Use regular if/else to build the button
             Widget actionButton;
             if (isInCart) {
               actionButton = TextButton(
