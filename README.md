@@ -41,6 +41,7 @@ Inspired by real-world shopping apps and structured for learning and customizati
 ## 📁 Project Structure
 
 lib/
+
 ├── main.dart                # App entry point and routing
 
 ├── models/
