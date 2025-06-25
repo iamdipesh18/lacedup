@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lacedup/providers/cart_notifier.dart';
 import 'package:lacedup/providers/products_provider.dart';
-import 'package:lacedup/shared/cart_icon.dart'; // Import the reactive cart icon
+import 'package:lacedup/shared/cart_icon.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -15,22 +15,30 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true, // This centers the title
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Image.asset(
+            'assets/logo/lacedup_logo.png', // your logo path
+            height: 45,
+            width: 45,
+            fit: BoxFit.contain,
+          ),
+        ),
         title: const Text(
           'LacedUp',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 22,
-            letterSpacing: 1,
+            fontSize: 20,
+            letterSpacing: 1.2,
           ),
         ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
-        actions: const [
-          CartIcon(), // ✅ Use reactive CartIcon widget here
-        ],
+        actions: const [CartIcon()],
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: GridView.builder(
@@ -88,7 +96,7 @@ class HomeScreen extends ConsumerWidget {
                     color: Colors.black12,
                     blurRadius: 10,
                     spreadRadius: 1,
-                    offset: Offset(0, 4),
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),

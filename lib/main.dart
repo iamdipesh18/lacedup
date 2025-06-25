@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lacedup/screens/home/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-
+import 'package:lacedup/screens/splash_screen.dart'; // ✅ Import splash screen
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -10,15 +8,21 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // This is my root of my application like everything starts from here
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '',
+      title: 'LacedUp',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.black,
+          brightness: Brightness.light,
+        ),
+        fontFamily: 'Roboto',
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(), // 👈 Start with splash screen
     );
   }
 }

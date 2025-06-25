@@ -8,9 +8,10 @@ class CartIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(cartNotifierProvider).length;
+    final cartCount = ref.watch(cartNotifierProvider).length;
 
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         IconButton(
           icon: const Icon(
@@ -25,21 +26,22 @@ class CartIcon extends ConsumerWidget {
             );
           },
         ),
-        if (count > 0)
+        if (cartCount > 0)
           Positioned(
-            right: 6,
-            top: 6,
-            child: Container(
+            right: 4,
+            top: 4,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
               width: 18,
               height: 18,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: Colors.deepPurple,
-                borderRadius: BorderRadius.circular(9),
+                shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: 1.5),
               ),
               child: Text(
-                count.toString(),
+                cartCount.toString(),
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 10,
