@@ -42,19 +42,29 @@ Inspired by real-world shopping apps and structured for learning and customizati
 
 lib/
 ├── main.dart                # App entry point and routing
+
 ├── models/
+
 │   └── shoe.dart            # Shoe model class
+
 ├── providers/
+
 │   └── shoe_provider.dart   # Shoe and cart state providers
+
 ├── screens/
+
 │   ├── home.dart            # Home screen with sneaker list
+
 │   ├── shoe_details.dart    # Sneaker detail view
+
 │   └── cart.dart            # Cart page
+
 ├── widgets/
+
 │   ├── shoe_tile.dart       # Reusable widget for each sneaker
+
 │   └── shoe_list.dart       # (Optional) List logic abstraction
-└── themes/
-    └── app_theme.dart       # App-wide theme and styling
+
 
 ## 🙏 Acknowledgements
 
@@ -82,11 +92,11 @@ Found a bug, have a suggestion, or want to contribute? Feel free to:
 I'd love to hear your thoughts and improvements to make this project even better!
 
 ## 🌱 Coming Soon (Ideas)
--🔍 Search bar and filters
--❤️ Favorite shoes
--🔐 Firebase Auth integration
--📤 Admin panel to upload sneakers
--🧾 Order history
+- 🔍 Search bar and filters
+- ❤️ Favorite shoes
+- 🔐 Firebase Auth integration
+- 📤 Admin panel to upload sneakers
+- 🧾 Order history
 
 ## Live Demo (Currently Working on it!)
 
