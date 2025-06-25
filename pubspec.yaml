@@ -33,6 +33,7 @@ flutter:
 flutter_launcher_icons: # ✅ Correctly placed here
   android: true
   ios: true
-  image_path: "assets/logo/lacedup_logo.png"
+  # image_path: "assets/logo/lacedup_logo.png"
+  image_path: "assets/logo/logo.png"
   android_background_color: "#1E1E1E" # Use a dark background to make logo visible
 
