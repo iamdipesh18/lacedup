@@ -18,9 +18,8 @@ Inspired by real-world shopping apps and structured for learning and customizati
 
 ## 📸 Screenshots
 
-> Add screenshots in `assets/screenshots/` and update the paths below:
-
 ![Home](assets/screenshots/Screenshot_1750829334.png)
+
 ![Cart](assets/screenshots/Screenshot_1750829357.png)
 
 ---
