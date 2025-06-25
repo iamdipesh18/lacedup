@@ -38,6 +38,58 @@ Inspired by real-world shopping apps and structured for learning and customizati
 
 ## 🛠️ Getting Started
 
+## 📁 Project Structure
+
+lib/
+├── main.dart                # App entry point and routing
+├── models/
+│   └── shoe.dart            # Shoe model class
+├── providers/
+│   └── shoe_provider.dart   # Shoe and cart state providers
+├── screens/
+│   ├── home.dart            # Home screen with sneaker list
+│   ├── shoe_details.dart    # Sneaker detail view
+│   └── cart.dart            # Cart page
+├── widgets/
+│   ├── shoe_tile.dart       # Reusable widget for each sneaker
+│   └── shoe_list.dart       # (Optional) List logic abstraction
+└── themes/
+    └── app_theme.dart       # App-wide theme and styling
+
+## 🙏 Acknowledgements
+
+Built as a customization of the Flutter Riverpod Shopping App Tutorial by The Net Ninja.
+Big thanks for the fantastic learning content!
+
+Additional thanks to:
+
+Flutter community for tools and documentation
+
+Riverpod for modern, maintainable state management
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## 💬 Feedback or Contributions
+
+Found a bug, have a suggestion, or want to contribute? Feel free to:
+
+- ⭐ Star the repo to show your support
+- 🐛 [Open an issue](https://github.com/iamdipesh18/my_tea_ghar/issues) for bugs or ideas
+- 📥 Fork the repo and submit a pull request
+
+I'd love to hear your thoughts and improvements to make this project even better!
+
+## 🌱 Coming Soon (Ideas)
+-🔍 Search bar and filters
+-❤️ Favorite shoes
+-🔐 Firebase Auth integration
+-📤 Admin panel to upload sneakers
+-🧾 Order history
+
+## Live Demo (Currently Working on it!)
+
 Follow the steps below to run the app locally:
 
 ### 1. Prerequisites
